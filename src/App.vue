@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link :to="{ name: 'deals', params: { location: 'london' }}">London</router-link> |
+      <router-link :to="{ name: 'deals', params: { location: 'shop' }}">Shop</router-link> |
+      <router-link :to="{ name: 'deals', params: { location: 'travel' }}">Travel</router-link> |
+      <router-link to="/">details</router-link>
     </div>
     <router-view/>
   </div>
