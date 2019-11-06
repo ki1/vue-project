@@ -4,6 +4,7 @@
       <router-link :to="{ name: 'deals', params: { location: 'london' }}">London</router-link> |
       <router-link :to="{ name: 'deals', params: { location: 'shop' }}">Shop</router-link> |
       <router-link :to="{ name: 'deals', params: { location: 'travel' }}">Travel</router-link> |
+      <router-link :to="{ name: 'deals', params: { location: 'shop', category: 'home' }}">Home</router-link> |
       <router-link to="/">details</router-link>
     </div>
     <router-view/>

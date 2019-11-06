@@ -12,11 +12,11 @@ Vue.config.productionTip = false;
 
 new Vue({
   router,
+  store,
   watch:{
     '$route' (to, from){
       this.$store.dispatch('UPDATE_PAGE_COUNT');
     }
   },
-  store,
   render: h => h(App),
 }).$mount('#app');

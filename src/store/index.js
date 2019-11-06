@@ -5,11 +5,17 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    deals: null,
+    deals: {
+      'london': null,
+      'national-deal': null
+    },
     selectedDeal: null,
     pageCount: 0
   },
   mutations: {
+    SET_DEALS: (state, { deals, pathKey }) => {
+      state.deals[pathKey] = deals;
+    },
     SET_PAGE_COUNT: (state, { newCount }) => {
       state.pageCount = newCount;
     },

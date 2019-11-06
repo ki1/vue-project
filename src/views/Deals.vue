@@ -1,6 +1,6 @@
 <template>
   <div class="deals">
-    <h1 class="pageTitle">{{this.$route.params.location}}</h1>
+    <h1 class="pageTitle">{{routeName}}</h1>
     <div class="container-fluid">
       <div class="container">
         <div class="row">
@@ -18,7 +18,7 @@
 
 <script>
 import DealsService from '@/services/DealsService'
-import DealComponent from '@/components/Deal.vue';
+import DealComponent from '@/components/DealListing.vue';
 import PageCounter from '@/components/PageCounter.vue';
 
 export default {
@@ -35,20 +35,18 @@ export default {
     PageCounter,
   },
   created() {
-    // fetch the data when the view is created and the data is
-    // already being observed
+    // fetch the data when the view is created and the data is already being observed
     console.log('CALLED 1');
     this.fetchData()
   },
   watch: {
-    // call again the method if the route changes
     '$route': 'fetchData',
   },
   computed: {
     routeName() {
-      // We will see what `params` is shortly
-      console.log(this.$route.name);
-      return this.$route.name
+      let route = this.$route.params.location;
+      if (this.$route.params.category) route += ' - ' + this.$route.params.category;
+      return route;
     }
   },
   methods: {
@@ -56,8 +54,7 @@ export default {
       console.log('CALLED 2');
       this.error = this.post = null;
       this.loading = true;
-      // replace `getPost` with your data fetching util / API wrapper
-      const response = await DealsService.getDeals({ location: this.$route.params.location })
+      const response = await DealsService.getDeals({ location: this.$route.params.location, category: this.$route.params.category, store: this.$store })
       this.deals = response.data.deals
     },
   },
