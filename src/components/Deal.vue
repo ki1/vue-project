@@ -1,5 +1,5 @@
 <template>
-  <div class="deal">
+  <div class="deal" v-on:click="selectDeal">
     <img class="image" :src="deal.images[0].imageUrl.replace('static', 'images')+'.jpg'">
     <h2>{{deal.headline}}</h2>
     <p>
@@ -14,6 +14,12 @@
     props: {
       deal: Object,
     },
+    methods: {
+      selectDeal: function (event) {
+        // `this` inside methods points to the Vue instance
+        this.$store.dispatch('UPDATE_SELECTED_DEAL', { newDealId: this.deal.id });
+      }
+    }
   };
 </script>
 
