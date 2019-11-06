@@ -1,51 +1,23 @@
 <template>
   <div class="deals">
-    <h1>{{this.$route.params.location}}</h1>
-
-
+    <h1 class="pageTitle">{{this.$route.params.location}}</h1>
     <div class="container-fluid">
-
       <div class="container">
         <div class="row">
           <div class="col-sm">
-
             <div v-for="deal in deals" v-bind:key="deal.id">
-
-              <b-card
-                :title="deal.headline"
-                :img-src="deal.images[0].imageUrl.replace('static', 'images')+'.jpg'"
-                img-alt="Image"
-                img-top
-                tag="article"
-                style="max-width: 20rem;"
-                class="mb-2"
-              >
-                <b-card-text>
-                  {{deal.title}}
-                  <!--<br>route:<b>{{ routeName }}</b>-->
-
-
-                </b-card-text>
-
-                <!--<b-button href="#" variant="primary">Go somewhere</b-button>-->
-              </b-card>
-
+              <DealComponent :deal="deal"></DealComponent>
             </div>
-
-
-
           </div>
         </div>
       </div>
-
-
     </div>
-
   </div>
 </template>
 
 <script>
 import DealsService from '@/services/DealsService'
+import DealComponent from '@/components/Deal.vue';
 
 export default {
   data() {
@@ -55,6 +27,9 @@ export default {
       error: null,
       deals: null,
     };
+  },
+  components: {
+    DealComponent,
   },
   created() {
     // fetch the data when the view is created and the data is
@@ -85,3 +60,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  .pageTitle {
+    font-size: 28px;
+  }
+</style>
