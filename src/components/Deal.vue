@@ -19,9 +19,13 @@
 
 <style scoped lang="scss">
   h2 {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
   p {
+    font-size: 14px;
     margin-bottom: 0.5rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;

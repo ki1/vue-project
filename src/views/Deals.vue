@@ -12,12 +12,14 @@
         </div>
       </div>
     </div>
+    <page-counter></page-counter>
   </div>
 </template>
 
 <script>
 import DealsService from '@/services/DealsService'
 import DealComponent from '@/components/Deal.vue';
+import PageCounter from '@/components/PageCounter.vue';
 
 export default {
   data() {
@@ -30,11 +32,12 @@ export default {
   },
   components: {
     DealComponent,
+    PageCounter,
   },
   created() {
     // fetch the data when the view is created and the data is
     // already being observed
-    console.log('IS THIS CALLED 1');
+    console.log('CALLED 1');
     this.fetchData()
   },
   watch: {
@@ -50,7 +53,7 @@ export default {
   },
   methods: {
     async fetchData () {
-      console.log('IS THIS CALLED');
+      console.log('CALLED 2');
       this.error = this.post = null;
       this.loading = true;
       // replace `getPost` with your data fetching util / API wrapper
