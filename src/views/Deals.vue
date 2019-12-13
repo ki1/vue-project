@@ -18,7 +18,7 @@
 
 <script>
 import DealsService from '@/services/DealsService'
-import DealComponent from '@/components/DealListing.vue';
+import DealComponent from '@/components/DealComponent.vue';
 import PageCounter from '@/components/PageCounter.vue';
 
 export default {
